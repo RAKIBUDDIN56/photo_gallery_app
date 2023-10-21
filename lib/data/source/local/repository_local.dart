@@ -1,0 +1,24 @@
+import 'package:hive/hive.dart';
+import 'package:photo_gallery_app/data/source/local/repositry.dart';
+import '../../../domain/models/photos_list_response.dart';
+import '../../../utils/app_hive.dart';
+
+class RepositoryLocal extends Repositry {
+  @override
+   Future<dynamic> getData(String key) async {
+    var photoGalleryBox = await Hive.openBox(AppHive.photoGalleryBox);
+    return photoGalleryBox.get(key);
+  }
+
+  @override
+  Future<void> putPhotoData(List<Photo> response) async {
+    var photoListBox = await Hive.openBox<Photo>(AppHive.photoListBox);
+    photoListBox.addAll(response);
+  }
+
+  @override
+  Future<void> put(dynamic key, dynamic value) async {
+    var photoGalleryBox = await Hive.openBox(AppHive.photoGalleryBox);
+    photoGalleryBox.put(key, value);
+  }
+}
