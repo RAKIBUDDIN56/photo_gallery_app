@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import '../domain/models/file_response.dart';
 
-
 Widget showLoader(BuildContext context) {
   return Platform.isIOS
       ? CupertinoActivityIndicator(
@@ -22,7 +21,6 @@ Widget showLoader(BuildContext context) {
 
 Future<String> savePhoto(FileResponse response) async {
   try {
-   
     String path = '';
     if (Platform.isAndroid) {
       path = "/storage/emulated/0/Download";
@@ -61,7 +59,7 @@ showSnackBar(BuildContext context, String? message, [bool isError = false]) {
         message,
         style: TextStyle(color: isError ? Colors.yellow[300] : Colors.white),
       ),
-      duration: Duration(milliseconds: isError ? 2000 : 1000),
+      duration: Duration(milliseconds: isError ? 3000 : 3000),
     ),
   );
 }

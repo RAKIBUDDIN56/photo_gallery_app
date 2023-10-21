@@ -3,8 +3,8 @@ import 'package:photo_gallery_app/utils/app_constant.dart';
 import 'package:photo_gallery_app/utils/image_mixin.dart';
 import 'package:photo_gallery_app/widgets/cached_image.dart';
 
-class GalleryImageBox extends StatelessWidget with ImageMixin {
-  const GalleryImageBox({
+class PhotoWidget extends StatelessWidget with ImageMixin {
+  const PhotoWidget({
     Key? key,
     required this.url,
   }) : super(key: key);

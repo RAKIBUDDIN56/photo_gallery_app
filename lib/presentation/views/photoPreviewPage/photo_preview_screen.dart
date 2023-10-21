@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:photo_gallery_app/utils/utility.dart';
 import 'package:photo_gallery_app/widgets/loader_dialog.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-
 import '../../../data/source/network/API/api_response.dart';
 import '../../../domain/models/photos_list_response.dart';
 import '../../../utils/app_permission_handler.dart';
@@ -66,7 +65,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
         child: Stack(
           children: [
             photoView(),
-            Positioned(top: 40, right: 10, child: photoViewActions())
+            Positioned(top: 40, right: 10, child: photoDownload())
           ],
         ),
       ),
@@ -94,7 +93,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
     );
   }
 
-  Widget photoViewActions() {
+  Widget photoDownload() {
     return Container(
       padding: const EdgeInsets.only(bottom: 40.0),
       child: Row(

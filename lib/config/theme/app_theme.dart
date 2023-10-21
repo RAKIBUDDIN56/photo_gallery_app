@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 @immutable
 class AppTheme {
@@ -29,16 +29,15 @@ class AppTheme {
             menuStyle: MenuStyle(
                 shadowColor: MaterialStateProperty.all(Colors.green),
                 backgroundColor: MaterialStateProperty.all(Colors.grey))),
-       
+        fontFamily: GoogleFonts.dekko().fontFamily,
       );
     } else {
       return ThemeData(
           useMaterial3: true,
-          primaryColor: Colors.amber,
+          primaryColor: Colors.white,
           scaffoldBackgroundColor: Colors.white,
           buttonTheme: const ButtonThemeData(
             focusColor: Colors.blue,
-            buttonColor: Colors.orange,
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
@@ -49,7 +48,7 @@ class AppTheme {
             titleMedium: TextStyle(color: Colors.black),
             titleLarge: TextStyle(color: Colors.black),
           ),
-         
+          fontFamily: GoogleFonts.dekko().fontFamily,
           dropdownMenuTheme: const DropdownMenuThemeData(
               textStyle: TextStyle(color: Colors.white)));
     }

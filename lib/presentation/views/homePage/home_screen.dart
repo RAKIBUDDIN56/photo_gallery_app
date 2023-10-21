@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:photo_gallery_app/config/route/routes_name.dart';
-import 'package:photo_gallery_app/presentation/bloc/home_bloc.dart';
-import 'package:photo_gallery_app/presentation/views/homePage/widgets/gallery_image_box.dart';
-import '../../../data/source/network/API/api_response.dart';
-import '../../../domain/models/photos_list_response.dart';
-import '../../../utils/app_constant.dart';
-import '../../../utils/utility.dart';
-import 'package:photo_gallery_app/widgets/error.dart';
+import 'package:photo_gallery_app/presentation/library.dart';
 import '../photoPreviewPage/photo_preview_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _homeBloc.close();
   }
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -62,7 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: showLoader(context),
           );
         } else if (snapshot.data?.status == Status.completed) {
-         
           return photosGridView();
         } else if (snapshot.data?.status == Status.error) {
           return Error(
@@ -74,8 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
- 
 
   Widget photosGridView() {
     return Column(
@@ -95,8 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child:
-                    GalleryImageBox(url: _homeBloc.photoList[index].imageUrl),
+                child: PhotoWidget(url: _homeBloc.photoList[index].imageUrl),
               );
             },
             itemCount: _homeBloc.photoList.length,
@@ -127,6 +115,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
- 
 }

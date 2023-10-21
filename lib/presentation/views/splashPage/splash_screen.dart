@@ -22,28 +22,20 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              AppConstant.appBackground,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Center(
-              child: Text(
-                'Photo Gallery',
-                style: TextStyle(
-                  fontFamily: 'Bellania',
-                  color: Colors.white,
-                  fontSize: 24.0,
-                ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                AppConstant.appBackground,
               ),
-            ),
-          ),
-        ],
+              fit: BoxFit.fill),
+        ),
+        child: Image.asset(
+          AppConstant.appBackground,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

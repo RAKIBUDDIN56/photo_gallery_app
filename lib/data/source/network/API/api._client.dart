@@ -46,9 +46,6 @@ class ApiClient {
           return response.body;
         }
         return '';
-      case 204: // No Content
-      case 302: // Found
-        return '';
       case 400:
       case 401:
       case 403:
