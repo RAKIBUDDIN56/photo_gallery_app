@@ -1,5 +1,4 @@
 # Photo Gallery
-Photo Gallery mobile application.
 
 ## Description
 Photo Gallery is a simple mobile app developer with Flutter. I used Unsplash API for fetching photos.
