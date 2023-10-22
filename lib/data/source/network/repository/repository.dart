@@ -1,8 +1,7 @@
-import '../../../../domain/models/photos_list_response.dart';
 
+import 'package:photo_gallery_app/data/library.dart';
 import '../API/api._client.dart';
-
 abstract class Repository {
-  Future<Responses<List<Photo>>> fetchPhotosList(int pageNumber);
+  Future<Response<List<Photo>>> fetchPhotosList(int pageNumber);
   Future<String> downloadPhoto(String downloadUrl, String fileName);
 }

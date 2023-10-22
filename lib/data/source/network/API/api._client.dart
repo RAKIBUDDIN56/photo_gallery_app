@@ -1,12 +1,10 @@
-import 'dart:io';
+import 'package:photo_gallery_app/data/library.dart';
 import 'package:http/http.dart' as http;
-import '../../../../domain/models/file_response.dart';
-import '../API/api_key.dart';
-import 'api_exception.dart';
 
+import 'api_exception.dart';
 class ApiClient {
   Future<dynamic> get(String url) async {
-    Responses returnResponse;
+    Response returnResponse;
     Map<String, String> headers = {'Authorization': ApiKey.API_KEY};
     try {
       final response = await http.get(Uri.parse(url), headers: headers).timeout(
@@ -15,7 +13,7 @@ class ApiClient {
           throw FetchDataException('Request timeout');
         },
       );
-      returnResponse = Responses(
+      returnResponse = Response(
           _returnResponse(response), response.statusCode, response.headers);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -24,14 +22,14 @@ class ApiClient {
     return returnResponse;
   }
 
-  Future<FileResponse> getFile(String url,String fileName) async {
+  Future<FileResponse> getFile(String url, String fileName) async {
     FileResponse responseJson;
 
     try {
       final response = await http.get(Uri.parse(url));
 
       responseJson =
-          FileResponse(fileBytes: response.bodyBytes, filename:fileName );
+          FileResponse(fileBytes: response.bodyBytes, filename: fileName);
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
@@ -59,10 +57,10 @@ class ApiClient {
   }
 }
 
-class Responses<T> {
+class Response<T> {
   T body;
   int statusCode;
   Map<String, dynamic> headers;
 
-  Responses(this.body, this.statusCode, this.headers);
+  Response(this.body, this.statusCode, this.headers);
 }

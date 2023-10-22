@@ -56,7 +56,7 @@ class HomeBloc extends BaseBloc {
       }
 
       if (hasNextPage) {
-        final Responses<List<Photo>> response =
+        final Response<List<Photo>> response =
             await _photoRepository.fetchPhotosList(pageNumber);
 
         if (response.headers['link'].toString().contains('rel="next"')) {

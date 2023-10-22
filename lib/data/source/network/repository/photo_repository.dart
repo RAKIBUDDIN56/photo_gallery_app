@@ -1,25 +1,17 @@
-import 'dart:io';
+import 'package:photo_gallery_app/data/library.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:photo_gallery_app/data/source/network/repository/repository.dart';
-
-import 'package:photo_gallery_app/config/constants/app_constant.dart';
-import '../../../../domain/models/file_response.dart';
-import '../../../../domain/models/photos_list_response.dart';
 import '../API/api._client.dart';
 import '../API/api_endpoints.dart';
 import '../API/base_url.dart';
-import  'package:path_provider/path_provider.dart';
-
 
 class PhotosRepository extends Repository {
   final ApiClient _apiClient = ApiClient();
 
   @override
-  Future<Responses<List<Photo>>> fetchPhotosList(int pageNumber) async {
-    final Responses response = await _apiClient.get(
+  Future<Response<List<Photo>>> fetchPhotosList(int pageNumber) async {
+    final Response response = await _apiClient.get(
         '${BaseURL.baseURL}${Endpoints.photos}/?page=$pageNumber&limit=${AppConstant.photoListLimit}');
-    return Responses(photoModelFromJson(response.body), response.statusCode,
+    return Response(photoModelFromJson(response.body), response.statusCode,
         response.headers);
   }
 
@@ -29,7 +21,8 @@ class PhotosRepository extends Repository {
         await _apiClient.getFile(downloadUrl, fileName);
     return savePhoto(response);
   }
-   Future<String> savePhoto(FileResponse response) async {
+
+  Future<String> savePhoto(FileResponse response) async {
     try {
       String path = '';
       if (Platform.isAndroid) {

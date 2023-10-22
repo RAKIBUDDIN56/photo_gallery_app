@@ -1,7 +1,4 @@
-import 'package:hive/hive.dart';
-import 'package:photo_gallery_app/data/source/local/repositry.dart';
-import '../../../domain/models/photos_list_response.dart';
-import '../../../utils/app_hive.dart';
+import 'package:photo_gallery_app/data/library.dart';
 
 class RepositoryLocal extends Repositry {
   @override

@@ -25,7 +25,11 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
   void initState() {
     super.initState();
 
-    _currentIndex = index;
+    initialization();
+  }
+
+  initialization(){
+      _currentIndex = index;
     _pageController = PageController(initialPage: index);
 
     _bloc.loaderStream.listen((event) {
@@ -94,9 +98,10 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
             iconData:
                 Platform.isIOS ? CupertinoIcons.cloud_download : Icons.download,
             onPressed: () async {
-              bool? permission = await PermissionUtil.getPermission(context, Permission.storage);
+              bool? permission = await PermissionUtil.getPermission(
+                  context, Permission.storage);
               debugPrint(permission.toString());
-              if (permission !=null  && permission) {
+              if (permission != null && permission) {
                 _bloc.downloadPhoto(photoList[_currentIndex].imageUrl,
                     photoList[_currentIndex].id);
               } else {
