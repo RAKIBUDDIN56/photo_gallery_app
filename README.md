@@ -13,9 +13,10 @@ Photo Gallery is a simple mobile app developer with Flutter. I used Unsplash API
 - Populating gallery photos from API with pagination [API by - https://api.unsplash.com]
 - Cache network image
 - HTTP response cache using Hive
+- Download image
 
   
-## Live Example
+## Live
 https://drive.google.com/file/d/1uAw1MaOmeXBosnVzq6ETVo4EQAP8X3Ip/view?usp=sharing
 
 
