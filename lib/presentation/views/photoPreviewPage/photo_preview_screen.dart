@@ -28,8 +28,8 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
     initialization();
   }
 
-  initialization(){
-      _currentIndex = index;
+  initialization() {
+    _currentIndex = index;
     _pageController = PageController(initialPage: index);
 
     _bloc.loaderStream.listen((event) {
@@ -56,6 +56,11 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.white, 
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [
