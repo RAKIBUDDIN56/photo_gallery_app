@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:photo_gallery_app/utils/app_constant.dart';
-import 'package:photo_gallery_app/utils/image_mixin.dart';
-import 'package:photo_gallery_app/widgets/cached_image.dart';
-
-class PhotoWidget extends StatelessWidget with ImageMixin {
+import 'package:photo_gallery_app/presentation/library.dart';
+class PhotoWidget extends StatelessWidget  {
   const PhotoWidget({
     Key? key,
     required this.url,

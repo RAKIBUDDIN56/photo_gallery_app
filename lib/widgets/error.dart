@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class Error extends StatelessWidget {
   final String? errorMessage;
   final Function onRetryPressed;
-  const Error({Key? key, this.errorMessage, required this.onRetryPressed}) : super(key: key);
+  const Error({Key? key, this.errorMessage, required this.onRetryPressed})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -13,8 +14,8 @@ class Error extends StatelessWidget {
           Text(
             errorMessage ?? 'Something went wrong',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
+            style: const TextStyle(
+              color: Color.fromARGB(255, 218, 215, 215),
               fontSize: 14.0,
             ),
           ),
@@ -22,15 +23,20 @@ class Error extends StatelessWidget {
           TextButton(
             style: ButtonStyle(
               side: MaterialStateProperty.all(
-                BorderSide(color: Theme.of(context).colorScheme.secondary, width: 1.0, style: BorderStyle.solid),
+                BorderSide(
+                    color: Theme.of(context).colorScheme.secondary,
+                    width: 1.0,
+                    style: BorderStyle.solid),
               ),
-              foregroundColor: MaterialStateProperty.all<Color?>(Theme.of(context).colorScheme.secondary),
+              foregroundColor: MaterialStateProperty.all<Color?>(
+                  Theme.of(context).colorScheme.secondary),
             ),
             onPressed: () {
               onRetryPressed();
             },
             child: const Text(
               'Retry',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],

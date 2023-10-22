@@ -1,14 +1,4 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:photo_gallery_app/data/source/local/repository_local.dart';
-import 'package:photo_gallery_app/data/source/network/API/api._client.dart';
-import 'package:photo_gallery_app/presentation/bloc/base_bloc.dart';
-
-import '../../data/source/network/API/api_response.dart';
-import '../../data/source/network/repository/photo_repository.dart';
-import '../../domain/models/photos_list_response.dart';
-import '../../utils/app_hive.dart';
+import 'package:photo_gallery_app/presentation/library.dart';
 
 class HomeBloc extends BaseBloc {
   final PhotosRepository _photoRepository = PhotosRepository();
@@ -54,7 +44,6 @@ class HomeBloc extends BaseBloc {
 
     try {
       var photoListBox = await Hive.openBox<Photo>(AppHive.photoListBox);
-      // var photoGalleryBox = await Hive.openBox(AppHive.photoGalleryBox);
 
       if (checkDB && photoListBox.values.isNotEmpty) {
         _photoList.addAll(photoListBox.values);
@@ -81,7 +70,6 @@ class HomeBloc extends BaseBloc {
 
         // Store information to DB
         _repositoryLocal.putPhotoData(response.body);
-        // photoListBox.addAll(response.body);
 
         _repositoryLocal.put(AppHive.nextPageNumberKey, pageNumber);
         _repositoryLocal.put(AppHive.hasNextPageKey, hasNextPage);

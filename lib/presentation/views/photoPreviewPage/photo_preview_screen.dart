@@ -1,16 +1,7 @@
-import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:photo_gallery_app/utils/utility.dart';
-import 'package:photo_gallery_app/widgets/loader_dialog.dart';
-import 'package:photo_view/photo_view_gallery.dart';
-import '../../../data/source/network/API/api_response.dart';
-import '../../../domain/models/photos_list_response.dart';
-import '../../../utils/app_permission_handler.dart';
+import 'package:photo_gallery_app/presentation/library.dart';
+import 'package:photo_gallery_app/presentation/views/photoPreviewPage/widgets/photo_download_button.dart';
 import '../../bloc/photo_preview_bloc.dart';
-import 'widgets/photo_download_button.dart';
 
 class PhotoPreviewScreen extends StatefulWidget {
   final PhotoPreviewScreenArgs args;
@@ -103,9 +94,9 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen> {
             iconData:
                 Platform.isIOS ? CupertinoIcons.cloud_download : Icons.download,
             onPressed: () async {
-              bool res = await AppPermissionHandler().hasStoragePermission();
-              debugPrint(res.toString());
-              if (res) {
+              bool? permission = await PermissionUtil.getPermission(context, Permission.storage);
+              debugPrint(permission.toString());
+              if (permission !=null  && permission) {
                 _bloc.downloadPhoto(photoList[_currentIndex].imageUrl,
                     photoList[_currentIndex].id);
               } else {
